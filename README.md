@@ -1,15 +1,29 @@
 # Laravel Memory Cache
  
-COMING SOON
+DESCRIPTION COMING SOON
  
 ## Installation
  
-COMING SOON
+Require this package with composer. Use it with caution, it is not yet production ready.
+
+```
+composer require vinks/laravel-memory-cache
+```
 
 ## Usage
  
-COMING SOON
- 
+You just need to add a trait to your models.
+
+```php
+class VeryOftenLoadItem extends Model
+{
+    use SimpleMemoryCached;
+
+    // Additionnally, you can change the maximum number of items will be kept for a model. Default: 50.
+    const MEMORY_CACHE_LIMIT = 50;
+}
+```
+
 ## Contributing
  
 1. Fork it!
@@ -20,7 +34,7 @@ COMING SOON
  
 ## History
  
-Version 0.1 (2018-09-03) : First implementation of a memory based caching using primary keys.
+Version 1.0 (2018-09-03) : First implementation of a memory based caching using primary keys.
  
 ## Credits
  
