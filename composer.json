@@ -1,0 +1,23 @@
+{
+    "name": "vinks/laravel-memory-cache",
+    "description": "A memory-based simple cache system for Laravel Eloquent. The main goal is to prevent unrequired calls to DB.",
+    "keywords": ["laravel", "cache", "caching", "memory"],
+    "homepage": "https://github.com/Vinksyunit/laravel-memory-cache",
+    "type": "library",
+    "require": {
+        "php": ">=7.1.0",
+        "illuminate/database": "^5.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vinks\\MemoryCaching\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vincent Demonchy",
+            "email": "vinksyunit@hotmail.fr"
+        }
+    ]
+}
