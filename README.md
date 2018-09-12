@@ -1,23 +1,36 @@
 # Laravel Memory Cache
  
-DESCRIPTION COMING SOON
- 
+The main goal of this package is to prevent useless calls to the database which could be remembered easily in memory.
+
+The trait `SimpleMemoryCached` is watching for new instances of the model from the database and remembers them in a cache store in memory. If you ask for a model using `find` and his primary key, it will check in the store before requesting it to database.
+
+I know it is useless if good pratices are made accessing your models instances, but it can help the optimization of smal projects.
+
+```php
+\App\CachedModel::where('id', '<=', 50)->get();
+for ($i=0; $i < 200; $i++) {
+    \App\CachedModel::find(1);
+}
+// Only one request will be made :
+// SELECT * FROM `cached_models` WHERE `id` <= 50
+```
+
 ## Installation
- 
+
 Require this package with composer. Use it with caution, it is not yet production ready.
 
-```
+```bash
 composer require vinks/laravel-memory-cache
 ```
 
 ## Usage
- 
+
 You just need to add a trait to your models.
 
 ```php
 class VeryOftenLoadItem extends Model
 {
-    use SimpleMemoryCached;
+    use \Vinks\MemoryCaching\SimpleMemoryCached;
 
     // Additionnally, you can change the maximum number of items will be kept for a model. Default: 50.
     const MEMORY_CACHE_LIMIT = 50;
