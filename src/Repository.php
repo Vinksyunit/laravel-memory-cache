@@ -27,7 +27,10 @@ class Repository
     }
 
     public function get($key) {
-        return $this->store->firstWhere('k', $key);
+        if ($found = $this->store->firstWhere('k', $key)) {
+            return $found['v'];
+        }
+        return null;
     }
 
     public function set($key, $value) {
